@@ -12,9 +12,13 @@ import ZXKitLogger
 
 func UIImageHDBoundle(named: String?) -> UIImage? {
     guard let name = named else { return nil }
-    guard let bundlePath = Bundle(for: HDPingTools.self).path(forResource: "ping-zxkit", ofType: "bundle") else { return nil }
+    guard let bundlePath = Bundle(for: PingZXKit.self).path(forResource: "ping-zxkit", ofType: "bundle") else { return nil }
     let bundle = Bundle(path: bundlePath)
     return UIImage(named: name, in: bundle, compatibleWith: nil)
+}
+
+class PingZXKit: NSObject {
+    
 }
 
 //ZXKitPlugin
