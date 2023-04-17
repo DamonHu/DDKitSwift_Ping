@@ -14,6 +14,6 @@ s.resource_bundles = {
 }
 s.source_files = "pod/zxkit/*.swift"
 s.dependency 'ZXKitCore', '~> 2.0'
-s.dependency 'ZXUserDefaultManager', '~> 2.0'
+s.dependency 'HDPingTools', '~> 2.0'
 s.documentation_url = 'https://blog.hudongdong.com/ios/1169.html'
 end
