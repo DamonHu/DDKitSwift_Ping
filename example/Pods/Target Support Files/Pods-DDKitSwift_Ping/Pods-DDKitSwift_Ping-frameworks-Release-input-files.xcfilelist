@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-DDKitSwift_Ping/Pods-DDKitSwift_Ping-frameworks.sh
+${BUILT_PRODUCTS_DIR}/DDKitSwift/DDKitSwift.framework
+${BUILT_PRODUCTS_DIR}/DDLoggerSwift/DDLoggerSwift.framework
+${BUILT_PRODUCTS_DIR}/DDPingTools/DDPingTools.framework
+${BUILT_PRODUCTS_DIR}/DDUtils/DDUtils.framework
