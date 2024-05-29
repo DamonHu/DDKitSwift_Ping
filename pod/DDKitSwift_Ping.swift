@@ -21,6 +21,10 @@ func UIImageHDBoundle(named: String?) -> UIImage? {
 open class DDKitSwift_Ping: DDKitSwiftPluginProtocol {
     private var tool = DDPingTools()
     
+    public init() {
+        
+    }
+    
     public var pluginIdentifier: String {
         return "com.ddkit.DDKitSwift_Ping"
     }
