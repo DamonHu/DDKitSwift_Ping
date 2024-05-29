@@ -12,19 +12,17 @@ import DDLoggerSwift
 
 func UIImageHDBoundle(named: String?) -> UIImage? {
     guard let name = named else { return nil }
-    guard let bundlePath = Bundle(for: PingZXKit.self).path(forResource: "ping-zxkit", ofType: "bundle") else { return nil }
+    guard let bundlePath = Bundle(for: DDKitSwift_Ping.self).path(forResource: "ping-zxkit", ofType: "bundle") else { return nil }
     let bundle = Bundle(path: bundlePath)
     return UIImage(named: name, in: bundle, compatibleWith: nil)
 }
 
-class PingZXKit: NSObject {
-    
-}
-
 //ZXKitPlugin
-extension DDPingTools: DDKitSwiftPluginProtocol {
+open class DDKitSwift_Ping: DDKitSwiftPluginProtocol {
+    private var tool = DDPingTools()
+    
     public var pluginIdentifier: String {
-        return "com.zxkit.DDPingTools"
+        return "com.ddkit.DDKitSwift_Ping"
     }
 
     public var pluginIcon: UIImage? {
@@ -40,16 +38,16 @@ extension DDPingTools: DDKitSwiftPluginProtocol {
     }
 
     public func start() {
-        if self.isRunning {
-            self.stop()
+        if self.tool.isRunning {
+            self.tool.stop()
             return
         }
-        DDKitSwift.show(.input(placeholder: self.hostName ?? "www.apple.com", text: self.hostName, endEdit: { [weak self] (url) in
+        DDKitSwift.show(.input(placeholder: self.tool.hostName ?? "www.apple.com", text: self.tool.hostName, endEdit: { [weak self] (url) in
             guard let self = self, !url.isEmpty else { return }
-            self.hostName = url
+            self.tool.hostName = url
             DDKitSwift.hide()
             DDLoggerSwift.show()
-            self.start(pingType: .any, interval: .second(10)) { (response, error) in
+            self.tool.start(pingType: .any, interval: .second(10)) { (response, error) in
                 if let error = error {
                     printError(error.localizedDescription)
                 } else if let response = response {
@@ -66,5 +64,13 @@ extension DDPingTools: DDKitSwiftPluginProtocol {
                 }
             }
         }))
+    }
+    
+    public var isRunning: Bool {
+        return self.tool.isRunning
+    }
+    
+    public func stop() {
+        self.tool.stop()
     }
 }

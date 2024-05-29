@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.createUI()
-        DDKitSwift.regist(plugin: DDPingTools())
+        DDKitSwift.regist(plugin: DDKitSwift_Ping())
     }
 
     func createUI() {

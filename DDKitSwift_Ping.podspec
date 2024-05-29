@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 s.name = 'DDKitSwift_Ping'
 s.swift_version = '5.0'
-s.version = '3.0.3'
+s.version = '3.0.4'
 s.license= { :type => "MIT", :file => "LICENSE" }
 s.summary = 'PingTools plugin for ZXKit, build by HDPingTools'
 s.homepage = 'https://github.com/DamonHu/DDKitSwift_Ping'
@@ -15,5 +15,5 @@ s.resource_bundles = {
 s.source_files = "pod/*.swift"
 s.dependency 'DDKitSwift/core', '~> 3.0.0'
 s.dependency 'DDPingTools', '~> 3.0.0'
-s.documentation_url = 'https://blog.hudongdong.com/ios/1169.html'
+s.documentation_url = 'https://github.com/DamonHu/DDKitSwift_Ping'
 end
