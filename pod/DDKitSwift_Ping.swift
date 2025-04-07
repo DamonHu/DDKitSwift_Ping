@@ -19,10 +19,11 @@ func UIImageHDBoundle(named: String?) -> UIImage? {
 
 //ZXKitPlugin
 open class DDKitSwift_Ping: DDKitSwiftPluginProtocol {
-    private var tool = DDPingTools()
+    private var tool: DDPingTools?
+    private var url: String
     
-    public init() {
-        
+    public init(url: String) {
+        self.url = url
     }
     
     public var pluginIdentifier: String {
@@ -42,39 +43,38 @@ open class DDKitSwift_Ping: DDKitSwiftPluginProtocol {
     }
 
     public func start() {
-        if self.tool.isRunning {
-            self.tool.stop()
-            return
+        if let pingTool = self.tool, pingTool.isRunning {
+            pingTool.stop()
         }
-        DDKitSwift.show(.input(placeholder: self.tool.hostName ?? "www.apple.com", text: self.tool.hostName, endEdit: { [weak self] (url) in
-            guard let self = self, !url.isEmpty else { return }
-            self.tool.hostName = url
-            DDKitSwift.hide()
-            DDLoggerSwift.show()
-            self.tool.start(pingType: .any, interval: .second(10)) { (response, error) in
-                if let error = error {
-                    printError(error.localizedDescription)
-                } else if let response = response {
-                    let time = Int(response.responseTime.second * 1000)
-                    printInfo("ping: \(response.pingAddressIP) sent \(response.responseBytes) data bytes, response:  \(time)ms")
+        guard let url = URL(string: self.url) else { return }
+        //开始测试
+        self.tool = DDPingTools(url: url)
+        self.tool?.debugLog = false
+        DDKitSwift.hide()
+        DDLoggerSwift.show()
+        self.tool!.start(pingType: .any, interval: .second(10)) { (response, error) in
+            if let error = error {
+                printError(error.localizedDescription)
+            } else if let response = response {
+                let time = Int(response.responseTime.second * 1000)
+                printInfo("ping: \(response.pingAddressIP) sent \(response.responseBytes) data bytes, response:  \(time)ms")
 
-                    var backgroundColor = UIColor.dd.color(hexValue: 0x5dae8b)
-                    if time >= 100 {
-                        backgroundColor = UIColor.dd.color(hexValue: 0xaa2b1d)
-                    } else if (time >= 50 && time < 100) {
-                        backgroundColor = UIColor.dd.color(hexValue: 0xf0a500)
-                    }
-                    DDKitSwift.updateFloatButton(config: DDKitSwiftButtonConfig(title: "\(time)ms", backgroundColor: backgroundColor), plugin: self)
+                var backgroundColor = UIColor.dd.color(hexValue: 0x5dae8b)
+                if time >= 100 {
+                    backgroundColor = UIColor.dd.color(hexValue: 0xaa2b1d)
+                } else if (time >= 50 && time < 100) {
+                    backgroundColor = UIColor.dd.color(hexValue: 0xf0a500)
                 }
+                DDKitSwift.updateFloatButton(config: DDKitSwiftButtonConfig(title: "\(time)ms", backgroundColor: backgroundColor), plugin: self)
             }
-        }))
+        }
     }
     
     public var isRunning: Bool {
-        return self.tool.isRunning
+        return self.tool?.isRunning ?? false
     }
     
     public func stop() {
-        self.tool.stop()
+        self.tool?.stop()
     }
 }

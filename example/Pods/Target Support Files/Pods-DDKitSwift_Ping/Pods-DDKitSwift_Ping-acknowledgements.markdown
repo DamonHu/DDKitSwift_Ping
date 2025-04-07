@@ -79,7 +79,7 @@ SOFTWARE.
 For SimplePing:
 ====================================================
 this porduct is available under a Apache-like license. For details, see
-https://github.com/DamonHu/DDPingTools/licenses/LICENSE-SimplePing
+https://github.com/DamonHu/HDPingTools/licenses/LICENSE-SimplePing
 
 
 ## DDUtils

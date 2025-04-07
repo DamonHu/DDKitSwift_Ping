@@ -14,7 +14,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.createUI()
-        DDKitSwift.regist(plugin: DDKitSwift_Ping())
+        let plugin = DDKitSwift_Ping(url: "https://baidu.com")
+        DDKitSwift.regist(plugin: plugin)
     }
 
     func createUI() {
