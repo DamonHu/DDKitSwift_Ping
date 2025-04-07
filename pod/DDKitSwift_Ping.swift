@@ -45,6 +45,7 @@ open class DDKitSwift_Ping: DDKitSwiftPluginProtocol {
     public func start() {
         if let pingTool = self.tool, pingTool.isRunning {
             pingTool.stop()
+            return
         }
         guard let url = URL(string: self.url) else { return }
         //开始测试
