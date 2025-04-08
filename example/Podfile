@@ -6,6 +6,6 @@ target 'DDKitSwift_Ping' do
   use_frameworks!
 
   # Pods for DDKitSwift_Ping
-	pod 'DDKitSwift/core', '~> 3'
+	pod 'DDKitSwift/core', '~> 4'
 	pod 'DDPingTools', '~> 3'
 end
