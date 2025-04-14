@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E4C3A04B2DACA1EF00C430E1 /* DDPingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C3A04A2DACA1EF00C430E1 /* DDPingViewController.swift */; };
+		E4C3A04C2DACA1EF00C430E1 /* DDPingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C3A0492DACA1EF00C430E1 /* DDPingTableViewCell.swift */; };
 		E4C9616229ECF2C1004C336B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C9616129ECF2C1004C336B /* AppDelegate.swift */; };
 		E4C9616429ECF2C1004C336B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C9616329ECF2C1004C336B /* SceneDelegate.swift */; };
 		E4C9616629ECF2C1004C336B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C9616529ECF2C1004C336B /* ViewController.swift */; };
@@ -24,6 +26,8 @@
 		A83963997955F4566A7B6773 /* Pods-ping-zxkit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ping-zxkit.debug.xcconfig"; path = "Target Support Files/Pods-ping-zxkit/Pods-ping-zxkit.debug.xcconfig"; sourceTree = "<group>"; };
 		C048AC4C3E3C3780F2B9A767 /* Pods-ping-zxkit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ping-zxkit.release.xcconfig"; path = "Target Support Files/Pods-ping-zxkit/Pods-ping-zxkit.release.xcconfig"; sourceTree = "<group>"; };
 		D8571ACA0527DFFE0341D743 /* Pods-DDKitSwift_Ping.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDKitSwift_Ping.debug.xcconfig"; path = "Target Support Files/Pods-DDKitSwift_Ping/Pods-DDKitSwift_Ping.debug.xcconfig"; sourceTree = "<group>"; };
+		E4C3A0492DACA1EF00C430E1 /* DDPingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDPingTableViewCell.swift; sourceTree = "<group>"; };
+		E4C3A04A2DACA1EF00C430E1 /* DDPingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDPingViewController.swift; sourceTree = "<group>"; };
 		E4C9615E29ECF2C1004C336B /* DDKitSwift_Ping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDKitSwift_Ping.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4C9616129ECF2C1004C336B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4C9616329ECF2C1004C336B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 		E4C9617529ECF5B4004C336B /* pod */ = {
 			isa = PBXGroup;
 			children = (
+				E4C3A0492DACA1EF00C430E1 /* DDPingTableViewCell.swift */,
+				E4C3A04A2DACA1EF00C430E1 /* DDPingViewController.swift */,
 				E4C9617729ECF5B4004C336B /* DDKitSwift_Ping.swift */,
 				E4C9617829ECF5B4004C336B /* assets */,
 			);
@@ -245,6 +251,8 @@
 				E4C9616629ECF2C1004C336B /* ViewController.swift in Sources */,
 				E4C9616229ECF2C1004C336B /* AppDelegate.swift in Sources */,
 				E4C9617B29ECF5B4004C336B /* DDKitSwift_Ping.swift in Sources */,
+				E4C3A04B2DACA1EF00C430E1 /* DDPingViewController.swift in Sources */,
+				E4C3A04C2DACA1EF00C430E1 /* DDPingTableViewCell.swift in Sources */,
 				E4C9616429ECF2C1004C336B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,6 +401,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 29LH9MSG5N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DDKitSwift_Ping/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -400,12 +409,13 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ZXKitCore.ping-zxkit";
+				PRODUCT_BUNDLE_IDENTIFIER = com.speakpal.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -421,6 +431,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 29LH9MSG5N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DDKitSwift_Ping/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -428,12 +439,13 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ZXKitCore.ping-zxkit";
+				PRODUCT_BUNDLE_IDENTIFIER = com.speakpal.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

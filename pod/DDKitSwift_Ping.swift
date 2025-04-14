@@ -19,7 +19,6 @@ func UIImageHDBoundle(named: String?) -> UIImage? {
 
 //ZXKitPlugin
 open class DDKitSwift_Ping: DDKitSwiftPluginProtocol {
-    private var tool: DDPingTools?
     private var url: String
     
     public init(url: String) {
@@ -43,35 +42,16 @@ open class DDKitSwift_Ping: DDKitSwiftPluginProtocol {
     }
 
     public func start() {
-        guard let url = URL(string: self.url) else { return }
-        //开始测试
-        self.tool = DDPingTools(url: url)
-        self.tool?.showNetworkActivityIndicator = .none
-        self.tool?.debugLog = false
-        self.tool!.start(pingType: .any, interval: .second(5)) { (response, error) in
-            if let error = error {
-                printError(error.localizedDescription)
-            } else if let response = response {
-                let time = Int(response.responseTime.second * 1000)
-                var backgroundColor = UIColor.dd.color(hexValue: 0x5dae8b)
-                if time >= 100 {
-                    backgroundColor = UIColor.dd.color(hexValue: 0xaa2b1d)
-                } else if (time >= 50 && time < 100) {
-                    backgroundColor = UIColor.dd.color(hexValue: 0xf0a500)
-                }
-                
-                let config = DDPluginItemConfig.text(title: NSAttributedString(string: "\(time)ms", attributes: [NSAttributedString.Key.foregroundColor : UIColor.dd.color(hexValue: 0xffffff)]), backgroundColor: backgroundColor)
-                DDKitSwift.updateListItem(plugin: self, config: config)
-            }
-        }
+        let vc = DDPingViewController()
+        vc.defaultUrl = self.url
+        DDKitSwift.getCurrentNavigationVC()?.pushViewController(vc, animated: true)
     }
     
     public var isRunning: Bool {
-        return self.tool?.isRunning ?? false
+        return false
     }
     
     public func stop() {
-        self.tool?.stop()
-        DDKitSwift.updateListItem(plugin: self, config: .default)
+        
     }
 }
