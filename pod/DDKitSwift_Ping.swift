@@ -17,6 +17,21 @@ func UIImageHDBoundle(named: String?) -> UIImage? {
     return UIImage(named: name, in: bundle, compatibleWith: nil)
 }
 
+extension String{
+    var ZXLocaleString: String {
+        //优先使用主项目翻译
+        let mainValue = NSLocalizedString(self, comment: "")
+        if mainValue != self {
+            return mainValue
+        }
+        //使用自己的bundle
+        if let bundlePath = Bundle(for: DDKitSwift_Ping.self).path(forResource: "DDKitSwift_Ping", ofType: "bundle"), let bundle = Bundle(path: bundlePath) {
+            return NSLocalizedString(self, tableName: nil, bundle: bundle, value: self, comment: "")
+        }
+        return self
+    }
+}
+
 //ZXKitPlugin
 open class DDKitSwift_Ping: DDKitSwiftPluginProtocol {
     private var url: String
@@ -34,11 +49,11 @@ open class DDKitSwift_Ping: DDKitSwiftPluginProtocol {
     }
 
     public var pluginTitle: String {
-        return NSLocalizedString("Ping", comment: "")
+        return "Website Speed Test".ZXLocaleString
     }
 
     public var pluginType: DDKitSwiftPluginType {
-        return .ui
+        return .other
     }
 
     public func start() {

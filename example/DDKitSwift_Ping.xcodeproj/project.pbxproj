@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E401645C2DADF07900F16B5E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E401645A2DADF07900F16B5E /* Localizable.strings */; };
 		E4C3A04B2DACA1EF00C430E1 /* DDPingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C3A04A2DACA1EF00C430E1 /* DDPingViewController.swift */; };
 		E4C3A04C2DACA1EF00C430E1 /* DDPingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C3A0492DACA1EF00C430E1 /* DDPingTableViewCell.swift */; };
 		E4C9616229ECF2C1004C336B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C9616129ECF2C1004C336B /* AppDelegate.swift */; };
@@ -26,6 +27,17 @@
 		A83963997955F4566A7B6773 /* Pods-ping-zxkit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ping-zxkit.debug.xcconfig"; path = "Target Support Files/Pods-ping-zxkit/Pods-ping-zxkit.debug.xcconfig"; sourceTree = "<group>"; };
 		C048AC4C3E3C3780F2B9A767 /* Pods-ping-zxkit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ping-zxkit.release.xcconfig"; path = "Target Support Files/Pods-ping-zxkit/Pods-ping-zxkit.release.xcconfig"; sourceTree = "<group>"; };
 		D8571ACA0527DFFE0341D743 /* Pods-DDKitSwift_Ping.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DDKitSwift_Ping.debug.xcconfig"; path = "Target Support Files/Pods-DDKitSwift_Ping/Pods-DDKitSwift_Ping.debug.xcconfig"; sourceTree = "<group>"; };
+		E40164582DADF07900F16B5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E40164592DADF07900F16B5E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E401645D2DADFF1B00F16B5E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		E401645E2DADFF1B00F16B5E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		E401645F2DADFF1B00F16B5E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		E40164602DADFF2300F16B5E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		E40164612DADFF2300F16B5E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		E40164622DADFF2300F16B5E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E40164632DADFF2900F16B5E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		E40164642DADFF2900F16B5E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		E40164652DADFF2900F16B5E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E4C3A0492DACA1EF00C430E1 /* DDPingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDPingTableViewCell.swift; sourceTree = "<group>"; };
 		E4C3A04A2DACA1EF00C430E1 /* DDPingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDPingViewController.swift; sourceTree = "<group>"; };
 		E4C9615E29ECF2C1004C336B /* DDKitSwift_Ping.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDKitSwift_Ping.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +81,14 @@
 				41FF5A83215FC14FCCE6AD08 /* Pods_DDKitSwift_Ping.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E401645B2DADF07900F16B5E /* localizable */ = {
+			isa = PBXGroup;
+			children = (
+				E401645A2DADF07900F16B5E /* Localizable.strings */,
+			);
+			path = localizable;
 			sourceTree = "<group>";
 		};
 		E4C9615529ECF2C1004C336B = {
@@ -119,6 +139,7 @@
 		E4C9617829ECF5B4004C336B /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				E401645B2DADF07900F16B5E /* localizable */,
 				E4C9617929ECF5B4004C336B /* icon */,
 			);
 			path = assets;
@@ -176,6 +197,10 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				"zh-Hant",
+				ja,
+				ko,
 			);
 			mainGroup = E4C9615529ECF2C1004C336B;
 			productRefGroup = E4C9615F29ECF2C1004C336B /* Products */;
@@ -192,6 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E401645C2DADF07900F16B5E /* Localizable.strings in Resources */,
 				E4C9616E29ECF2C3004C336B /* LaunchScreen.storyboard in Resources */,
 				E4C9617C29ECF5B4004C336B /* HDPingTool.png in Resources */,
 				E4C9616B29ECF2C3004C336B /* Assets.xcassets in Resources */,
@@ -260,10 +286,25 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		E401645A2DADF07900F16B5E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E40164582DADF07900F16B5E /* en */,
+				E40164592DADF07900F16B5E /* zh-Hans */,
+				E401645F2DADFF1B00F16B5E /* zh-Hant */,
+				E40164622DADFF2300F16B5E /* ja */,
+				E40164652DADFF2900F16B5E /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		E4C9616729ECF2C1004C336B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E4C9616829ECF2C1004C336B /* Base */,
+				E401645D2DADFF1B00F16B5E /* zh-Hant */,
+				E40164602DADFF2300F16B5E /* ja */,
+				E40164632DADFF2900F16B5E /* ko */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -272,6 +313,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				E4C9616D29ECF2C3004C336B /* Base */,
+				E401645E2DADFF1B00F16B5E /* zh-Hant */,
+				E40164612DADFF2300F16B5E /* ja */,
+				E40164642DADFF2900F16B5E /* ko */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

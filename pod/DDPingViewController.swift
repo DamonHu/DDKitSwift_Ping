@@ -53,12 +53,26 @@ class DDPingViewController: UIViewController {
     lazy var mStartButton: UIButton = {
         let button = UIButton(type: .custom)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Start", for: .normal)
-        button.setTitle("Stop", for: .selected)
+        button.setTitle("Start".ZXLocaleString, for: .normal)
+        button.backgroundColor =  UIColor.dd.color(hexValue: 0x409eff)
         button.setTitleColor(UIColor.dd.color(hexValue: 0xffffff), for: .normal)
-        button.setBackgroundImage(UIImage.dd.getImage(color: UIColor.dd.color(hexValue: 0x409eff)), for: .normal)
-        button.setBackgroundImage(UIImage.dd.getImage(color: UIColor.dd.color(hexValue: 0xb8272c)), for: .selected)
-        button.addTarget(self, action: #selector(_pingChange), for: .touchUpInside)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+        button.addTarget(self, action: #selector(_pingStart), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var mResultButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.isHidden = true
+        button.backgroundColor =  UIColor.dd.color(hexValue: 0x5dae8b)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(UIColor.dd.color(hexValue: 0xffffff), for: .normal)
+        button.setTitle("Stop".ZXLocaleString, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+        button.addTarget(self, action: #selector(_pingStop), for: .touchUpInside)
+        button.dd.addLayerShadow(color: UIColor.dd.color(hexValue: 0x000000), offset: CGSize.zero, radius: 4, cornerRadius: 40)
+        button.layer.borderColor = UIColor.dd.color(hexValue: 0xffffff).cgColor
+        button.layer.borderWidth = 3
         return button
     }()
     
@@ -96,26 +110,24 @@ extension DDPingViewController {
         mStartButton.topAnchor.constraint(equalTo: self.mTextField.bottomAnchor, constant: 16).isActive = true
         mStartButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
+        self.view.addSubview(mResultButton)
+        mResultButton.centerXAnchor.constraint(equalTo: self.mStartButton.centerXAnchor).isActive = true
+        mResultButton.topAnchor.constraint(equalTo: self.mTextField.bottomAnchor, constant: 16).isActive = true
+        mResultButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        mResultButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        
         self.view.addSubview(mLogTableView)
         mLogTableView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 20).isActive = true
         mLogTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -20).isActive = true
-        mLogTableView.topAnchor.constraint(equalTo: self.mStartButton.bottomAnchor, constant: 40).isActive = true
+        mLogTableView.topAnchor.constraint(equalTo: self.mResultButton.bottomAnchor, constant: 16).isActive = true
         mLogTableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -30).isActive = true
     }
     
-    func _loadData() {
-        
-    }
-    
-    @objc func _pingChange() {
+    @objc func _pingStart() {
         self.mTextField.resignFirstResponder()
-        if  self.mStartButton.isSelected {
-            self.pingTool?.stop()
-            self.mStartButton.isSelected = false
-            return
-        }
+        self.mStartButton.isHidden = true
+        self.mResultButton.isHidden = false
         self.logList = []
-        self.mStartButton.isSelected = true
         guard let url = URL(string: "https://" + (self.mTextField.text ?? "")) else { return }
         self.pingTool = DDPingTools(url: url)
         self.pingTool?.debugLog = false
@@ -123,11 +135,35 @@ extension DDPingViewController {
             guard let self = self else { return }
             if let error = error {
                 self.logList.insert("error: \(error)", at: 0)
+                let backgroundColor = UIColor.dd.color(hexValue: 0xaa2b1d)  //深红色
+                self.mResultButton.backgroundColor = backgroundColor
+                self.mResultButton.setTitle("Error".ZXLocaleString, for: .normal)
             } else if let response = response {
-                self.logList.insert("ip=\(response.pingAddressIP) bytes=\(response.responseBytes) time=\(response.responseTime.second * 1000)", at: 0)
+                let time = Int(response.responseTime.second * 1000)
+                self.logList.insert("ip=\(response.pingAddressIP) bytes=\(response.responseBytes) time=\(time)", at: 0)
+                var backgroundColor = UIColor.dd.color(hexValue: 0xF75A5A)  //红色
+                var title = "Terrible".ZXLocaleString
+                if time <= 50 {
+                    backgroundColor = UIColor.dd.color(hexValue: 0x5dae8b)  //绿色
+                    title = "Fast".ZXLocaleString
+                } else if time <= 100 {
+                    backgroundColor = UIColor.dd.color(hexValue: 0x3D90D7)  //蓝色
+                    title = "Normal".ZXLocaleString
+                } else if time <= 200 {
+                    backgroundColor = UIColor.dd.color(hexValue: 0xf0a500)  //黄色
+                    title = "Slow".ZXLocaleString
+                }
+                self.mResultButton.backgroundColor = backgroundColor
+                self.mResultButton.setTitle(title, for: .normal)
             }
             self.mLogTableView.reloadData()
         })
+    }
+    
+    @objc func _pingStop() {
+        self.pingTool?.stop()
+        self.mStartButton.isHidden = false
+        self.mResultButton.isHidden = true
     }
 }
 
