@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 s.name = 'DDKitSwift_Ping'
 s.swift_version = '5.0'
-s.version = '4.1.0'
+s.version = '4.1.1'
 s.license= { :type => "MIT", :file => "LICENSE" }
 s.summary = 'PingTools plugin for DDKitSwift, build by DDPingTools'
 s.homepage = 'https://github.com/DamonHu/DDKitSwift_Ping'
